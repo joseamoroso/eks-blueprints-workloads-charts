@@ -8,7 +8,7 @@ image:
   repository: jamorosoa/eks-blueprints-sample-app
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "8678677809"
+  tag: "8684061954"
 
 imagePullSecrets: []
 nameOverride: ""
