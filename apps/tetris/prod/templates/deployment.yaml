@@ -31,7 +31,7 @@ spec:
         - name: {{ .Chart.Name }}
           env:
           - name: DB_FILENAME
-            value: /data/database.db
+            value: database.db
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -50,13 +50,6 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:
-            - name: {{ .Values.volume.name }}
-              mountPath: {{ .Values.volume.path }}
-      volumes:
-        - name: {{ .Values.volume.name }}
-          persistentVolumeClaim:
-            claimName: efs-pvc
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
